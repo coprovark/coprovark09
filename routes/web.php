@@ -29,7 +29,8 @@ Route::get('/page1', function () {
     $array = [
         "NAME" => "" ,
         "ID"   => "",
-        "GEN"  => ""
+        "GEN"  => "",
+        "NUM"  =>""
 ];
     return view('page.page1' , $array);
 });
@@ -50,6 +51,19 @@ Route::get('/page10/{id}', function ($id) {
     return view('page.page10',$array); 
 });
 
+Route::get('/form_register', function () {
+    return view('page.form_register'); 
+});
+
+Route::get('/login', function () {
+    return view('page.login'); 
+});
+
 #localhost:8000
 Route::post('/page','PageController@show');
+
+#select post
+Route::post('/page12','PageController@show_select');
+
+
 

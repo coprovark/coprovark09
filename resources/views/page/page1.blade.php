@@ -15,9 +15,9 @@
 
          <input type="text" name="name">
          <input type="hidden" name="hidden" value="59122420129">
-
          <input type="radio" name="radio" value="M"> ชาย
          <input type="radio" name="radio" value="F"> หญิง
+         <input type="password" name="password" value="12345678"> pass 
           <br>
 
          <input type="submit" value="ส่งค่า">
@@ -27,7 +27,8 @@
       <h1>แสดงค่า</h1>
      ชื่อ = {{ $NAME }} <br>
      ID = {{ $ID }} <br>
-     เพศ = {{ $GEN }} 
+     เพศ = {{ $GEN }} <br>
+     pass = {{ $NUM }} 
 
 
 @endsection

@@ -14,14 +14,23 @@ class PageController extends Controller
         $txt_name = $request->input('name');
         $txt_radio = $request->input('radio');
         $txt_hidden = $request->input('hidden');
+        $txt_password = $request->input('password');
 
         $array = [
-            "NAME" => $txt_name ,
+            "NAME" => $txt_name,
             "ID" => $txt_hidden,
-            "GEN" => $txt_radio
+            "GEN" => $txt_radio,
+            "NUM" => $txt_password
+        
     ];
 
-        return view('page.page1',$array);
-       
+        return view('page.page1',$array);   
     }
+
+   #show_select
+   public function show_select(Request $res){
+       return view('page.page12',$res);
+   }
+
+
 }
