@@ -67,9 +67,50 @@ Route::post('/page12','PageController@show_select');
 
 //link form.login
 Route::post('/page','PageController@ShowLogin');
+
 Route::get('/login', function () {
-    $data = ["USER"=>"",'PASSWORD'=>""];
-    return view('page.login',$data);
+    $data = [
+        'users'=>[]
+    ];
 });
 
+//Route::get('/form_check-login', function (){
+  //  return view('/form_check-login')
+//});
+
+
+Route::get('/login', function (){
+    $data = [
+        'users'=>[]
+    ];
+    return view('/page.login',$data);
+});    
+
+Route::post('/login','PageController@login');
+
+/////////////////////////////////////////////////////////////////
+
+Route::get('/form_login2', function () {
+    $array = [
+        'username'=>'',
+        'name'    =>''
+    ];
+    return view('/page.form_login',$array);
+});    
+
+Route::post('/form_login2','PageController@form_login2');
+
+
+
+///////////////////////////////////////////////////////////////////
+
+
+
+//  Route::get('/list_users', function () {
+//      return view('/page.list_users);
+//  });   
+
+ Route::get('/list_user','UsersController@list_users');
+
+ 
 

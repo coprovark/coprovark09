@@ -78,6 +78,9 @@
                         <li>
                             <a href="/form_register"><i class="fa fa-table fa-fw"></i> สมัครสมาชิก</a>
                         </li>
+                        <li>
+                            <a href="/list_user"><i class="fa fa-table fa-fw"></i> สมาชิก</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

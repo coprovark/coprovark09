@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -40,4 +41,45 @@ class PageController extends Controller
        return view('page.login',$data);
    }
 
+   public function login(Request $res){
+       #ค่ารับมา
+       $txt_name = $res->input('username');
+       $txt_pass = $res->input('password');
+
+       #เงื่อนไขการทำงาน
+   $users = DB::select('select * from users where username = ? and password = ?',
+       [$res['username'],$res['password']] 
+    );
+    foreach ($users as $value){
+        if($txtUser == $value->username){
+            if($txtPassword == $value->password){
+                $data['status'] = "true";
+            }
+        }
+    }
+    return  view('page.login',['users'=>$users]) ;
+
+   }
+
+#form_login2
+public function form_login2(Request $res){
+
+
+    $users = DB::table('users')->where([
+        ['username','=',$res['username']],
+        ['password','=',$res['password']]
+    ])->get();
+    $name ='';
+    foreach($users as $value){
+          $name = $value->id;
+    }
+    $res['name'] = $name;
+
+
+    return view('page.form_login',$res);
 }
+///-------------view----------------------
+
+
+
+} //end class
