@@ -65,5 +65,11 @@ Route::post('/page','PageController@show');
 #select post
 Route::post('/page12','PageController@show_select');
 
+//link form.login
+Route::post('/page','PageController@ShowLogin');
+Route::get('/login', function () {
+    $data = ["USER"=>"",'PASSWORD'=>""];
+    return view('page.login',$data);
+});
 
 
