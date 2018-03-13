@@ -3,7 +3,44 @@
 @section('content')
 
  <h1 class="page-header">สมัครสมาชิก</h1>
-                       <form>
+
+
+             <form action="/form_register_save" method="post">
+              
+                     
+                        <div class="form-group">
+                        <label>ID</label>
+                              <input type="text" class="form-control" placeholder="ใส่ id" name="ID" style="width:70%">
+                         </div>  
+                        <div class="form-group">
+                               <label>User</label>
+                               <input type="text" class="form-control"placeholder="ใส่ User" name="USERNAME" style="width :70%">
+                        </div>
+                        <div class="form-group">
+                               <label>Password</label>
+                               <input type="password" class="form-control"placeholder="ใส่ Password" name="PASSWORD" style="width :70%">
+                        </div>
+                        <label>STATUS</label>
+                        <div class="form-inline" style="width:100%">
+                                <select class="form-control" name="STATUS" style="width:9%" >
+                                    <option value="1" onclick>1</option>
+                                    <option value="2">2</option>
+                                </select>
+                        </div>
+                        <br>
+              
+                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                       
+                       
+                       
+                        <a type="button" href="/form_register" class="btn btn-danger">ยกเลิก</a>                      
+                </center>
+                        <br>
+                </form>
+
+
+
+                       <!-- <form>
                             <div class="form-group">
                                     <label for="name">ชื่อ-สกุล</label>
                                     <div class="form-inline" style="width:70%">
@@ -145,7 +182,7 @@
                             <button type="button" class="btn btn-primary">submit</button>
                             <button type="button" class="btn btn-danger">reset</button>
 
-                        </form>
+                        </form> -->
 
 
 @endsection
