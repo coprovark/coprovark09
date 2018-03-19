@@ -101,8 +101,7 @@ Route::get('/form_login2', function () {
 Route::post('/form_login2','PageController@form_login2');
 
 
-
-///////////////////////////////////////////////////////////////////
+//***********************************************************//
 
 
 
@@ -113,12 +112,41 @@ Route::post('/form_login2','PageController@form_login2');
  Route::get('/list_user','UsersController@list_users');
  Route::post('/list_users_find','UsersController@list_users_find');
  
-/////////////////////////////////////////////////////////////////
+//=================================================================//
+// function delete_users
   Route::get('delete_user/{id}', function ($id) {
      return 'User ='.$id;
  });
 
 Route::get('/delete_user/{id}','UsersController@delete_users');
 
+//===============================================================//
+//function update_users
+Route::get('update_users/{id}', function ($id) {
+    return 'User ='.$id;
+});
+
+
+//=============================================================//
  #form_register_save
 Route::post('/form_register_save','UsersController@form_register_save');
+//=============================================================//
+
+
+
+
+
+#งานใหม่/////////////////////////////////////////////
+
+// Route::post('/form_register_save','coprovark_09Controller@form_register_save');
+
+// Route::get('/list_coprovark_09','coprovark_09Controller@list_coprovark_09');
+// Route::post('/list_coprovark_09_find','coprovark_09Controller@list_coprovark_09_find');
+
+ #form_student_save
+
+// Route::post('/form_student', function () {
+//           return view('/page.form_student');
+//  });   
+
+

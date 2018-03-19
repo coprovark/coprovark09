@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'สมาชิก')
+@section('title', 'แสดงข้อมูล')
 
 @section('content')
 
@@ -21,27 +21,58 @@
         ค้นหา</button>
   </div>
 </form>
-    <table class="table">
-        <tr>
-            <td>ID</td>
-            <td>USERNAME</td>
-            <td>PASSWORD</td>
-            <td>STATUS</td>
-            <td></td>
+    <table class="table table-bordered">
+        <tr class="success">
+        <td><input type="checkbox"</td>
+            <td>รหัสนักศึกษา</td>
+            <td>ชื่อ-สกุล</td>
+            <td>วัน เดือน ปีเกิด</td>
+            <td>สังกัด</td>
+            <td>ดำเนินการ</td>
         </tr>
         @foreach($data_list as $item)
         <tr>
             <td>{{ $item->id }}</td>
-            <td>{{ $item->username }}</td>
-            <td>{{ $item->password }}</td>
-            <td>{{ $item->status }}</td>
+            <td>{{ $item->sid }}</td>
+            <td>{{ $item->fullName }}</td>
+            <td>{{ $item->birthDay }}</td>
+            @php
+            if($item->facultyID == 1){
+                $facultyID = "วิทยาการคอมพิวเตอร์";
+            }else if($item->facultyID == 2){
+                $facultyID = "เทคโนและอุตสาหกรรม";
+            }else if($item->facultyID == 3){
+                $facultyID = "มนุษศาสตร์และสังคมศาสตร์";
+            }else if($item->facultyID == 4){
+                $facultyID = "ครุศาสตร์";
+            }else if($item->facultyID == 5){
+                $facultyID = "เกษตรศาสตร์";
+            }else if($item->facultyID == 6){
+                $facultyID = "พยาบาลศาสตร์";
+            }else if($item->facultyID == 7){
+                $facultyID = "แพทย์แผนไทย";
+            }else if($item->facultyID == 8){
+                $facultyID = "สาธารณสุขศาสตร์";
+            }else if($item->facultyID == 9){
+                $facultyID = "บริหารธุรกิจและการจัดการ";
+            }else if($item->facultyID == 10){
+                $facultyID = "นิติศาสตร์";
+            }else{
+                $facultyID = "วิทยาศาสตร์";
+            };
+        @endphp
+        <td>{{ $facultyID }}</td>
+        
             <td>
+
+        
                 <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->id }}')">
                     <span class="glyphicon glyphicon-remove"></span>  
                     ลบรายการ
                 </button>
 
                 <button class="btn btn-warning btn-xs">
+                <a href="/form_register">
                     <span class="glyphicon glyphicon-pencil"></span>  
                     แก้ไข
                 </button>
@@ -49,7 +80,7 @@
         </tr>
         @endforeach
     </table>
-
+ 
     <script>
     function _confirm(id){
         if(confirm('ยืนยันการลบข้อมูล')){

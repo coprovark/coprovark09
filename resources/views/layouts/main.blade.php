@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.html">ใบงานที่ 1</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -57,7 +57,7 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
@@ -70,16 +70,16 @@
                                     <a href="morris.html">Morris.js Charts</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
+                            <! /.nav-second-level 
+                        </li> -->
+                        <li>
+                            <a href="/form_login2"><i class="glyphicon glyphicon-user"></i> เข้าสู้ระบบ</a>
                         </li>
                         <li>
-                            <a href="/login"><i class="fa fa-table fa-fw"></i> เข้าสู้ระบบ</a>
+                            <a href="/form_register"><i class="fa fa-file"></i> บันทึกข้อมูล</a>
                         </li>
                         <li>
-                            <a href="/form_register"><i class="fa fa-table fa-fw"></i> สมัครสมาชิก</a>
-                        </li>
-                        <li>
-                            <a href="/list_user"><i class="fa fa-table fa-fw"></i> สมาชิก</a>
+                            <a href="/list_user"><i class="fa fa-bars"></i> แสดงข้อมูล</a>
                         </li>
                     </ul>
                 </div>

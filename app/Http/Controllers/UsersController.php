@@ -10,21 +10,23 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    
+ 
+//list_user=====================================//  
     public function list_users()
     {
         $find= '';
-        $users = DB::table('users')->select('*')->get();
+        $users = DB::table('coprovark_09')->select('*')->get();
         return view('page.list_user',[
           'data_list' => $users,
           'find'      => $find
         ]);
     }
 
+    //list_users_find========================================//
     public function list_users_find(Request $req)
     {
         $find = $req->find;
-        $users = DB::table('users')
+        $users = DB::table('coprovark_09')
               ->select('*')
               ->where('id','=',$find)
               ->get();
@@ -35,21 +37,41 @@ class UsersController extends Controller
     }
 
     
-     
+//delete_users======================================================//
     public function delete_users($id){
-        DB::table('users')->where('id', '=', $id)->delete();
+        DB::table('coprovark_09')
+            ->where('id', '=', $id)
+            ->delete();
         return redirect('list_user');
       }
 
-      
-      public function form_register_save(Request $req){
+//delete_update======================================================//
+public function update_users($id){
+  DB::table('coprovark_09')
+      ->increment('id', '=', $id)
+      ->update();
+  return redirect('list_user');
+}      
 
-        $status = DB::table('users')->insert(
+// form_register_save==============================================//     
+      public function form_register_save(Request $req){
+        $status = DB::table('coprovark_09')->insert(
           [
-            'id'      => $req->ID,
-            'username'=> $req->USERNAME,
-            'password'=> $req->PASSWORD,
-            'status'  => $req->STATUS
+            'sid'        => $req->STD,
+            'titleName'  => $req->TITLENAME,
+            'fullName'   => $req->FULLNAME,
+            'gender'     => $req->GENDER,
+            'birthDay'   => $req->BIRTHDAY,
+            'facultyID'  => $req->FACULTYID,
+            'majorID'    => $req->MAJORID, 
+            'address'    => $req->ADDRESS,
+            'mobile'     => $req->MOBILE,
+            'food1'      => $req->FOOD1,
+            'food2'      => $req->FOOD2, 
+            'food3'      => $req->FOOD3,
+            'food4'      => $req->FOOD4,
+            'username'   => $req->USERNAME,
+            'password'   => $req->PASSWORD
           ]
         );
         if($status){
@@ -58,6 +80,7 @@ class UsersController extends Controller
            return "เกิดข้อผิดพลาด";
         }
        
+       
       }
 
-}//class
+}//endclass Controller
