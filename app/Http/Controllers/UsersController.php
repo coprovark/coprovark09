@@ -45,13 +45,45 @@ class UsersController extends Controller
         return redirect('list_user');
       }
 
-//delete_update======================================================//
-public function update_users($id){
-  DB::table('coprovark_09')
-      ->increment('id', '=', $id)
-      ->update();
-  return redirect('list_user');
-}      
+//form_user_edit======================================================//
+public function list_user_edit(Request $req){
+    $find = $req->id;
+    $user = DB::table('coprovark_09')
+          ->select('*')
+          ->where('id','=',$find)
+          ->get();
+
+    return view('page.list_user_edit',[
+      'user' => $user,
+      
+    ]);
+}
+
+//form_user_update======================================================//
+    //อัพเดทข้อมูล user
+    public function list_user_update(Request $req){
+        $user_code      = $req->STD;
+        $user_name      = $req->FULLNAME;
+        $data = [
+            'fullName'=>$user_name
+        ];
+        $status = DB::table('coprovark_09')
+                    ->where('sid', $user_code)
+                    ->update($data);
+        return redirect('list_user');
+  }
+
+// //แก้ไข user
+// public function list_user_edit(Request $req){
+//   $find = $req->id;
+//   $user = DB::table('users')
+//                    ->select('*')
+//                    ->where('id','=',$find)
+//                    ->get();
+//   return view('page.list_user_edit',[
+//           'user'=>$user
+//   ]);
+// }
 
 // form_register_save==============================================//     
       public function form_register_save(Request $req){

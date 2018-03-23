@@ -11,17 +11,18 @@
 
     <title>webapp</title>
 
-        <!-- Bootstrap Core CSS -->
-        <link rel="stylesheet" href="{{ URL::asset('asset/css/bootstrap/css/bootstrap.min.css') }}">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- MetisMenu CSS -->
-<link rel="stylesheet" href="{{ URL::asset('asset/css/metisMenu/metisMenu.min.css') }}">
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link rel="stylesheet" href="{{ URL::asset('asset/css/sb-admin-2.css') }}">
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
-<!-- Custom Fonts -->
-<link rel="stylesheet" href="{{ URL::asset('asset/css/font-awesome/css/font-awesome.min.css') }}">
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 
 </head>
 
@@ -38,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ใบงานที่ 1</a>
+                <a class="navbar-brand" href="index.html">CO_PROVARK09</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -56,29 +57,71 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <!-- <li>
+                     <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> ข้อมูลพื้นฐาน<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                    <a href="show_user">> ประเภทผู้ใช้งาน</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="show_title">> ชื่อ-สกุล</a>
+                                </li>
+                                <li>
+                                    <a href="show_faculty">> คณะ</a>
+                                </li>
+                                <li>
+                                    <a href="show_mojor">> สาขา</a>
+                                </li>
+                                <li>
+                                    <a href="show_type">> ประเภทการศึกษา</a>
+                                </li>
+                                <li>
+                                    <a href="show_institute">> สถาบันการศึกษา</a>
+                                </li>
+                                <li>
+                                    <a href="show_user">> Learning style</a>
+                                </li>
+                                <li>
+                                    <a href="show_birthday">> วัน เดือน ปีเกิด</a>
+                                </li>
+                                <li>
+                                    <a href="show_gender">> เพศ</a>
+                                </li>
+                                <li>
+                                    <a href="show_user">> สถานภาพ</a>
+                                </li>
+                                <li>
+                                    <a href="show_user">> หมู่เลือด</a>
+                                </li>
+                                <li>
+                                    <a href="show_user">> สัญชาติ</a>
+                                </li>
+                                <li>
+                                    <a href="show_user">> เชื้อชาติ</a>
+                                </li>
+                                <li>
+                                    <a href="show_user">> ศาสนา</a>
+                                </li>
+                                <li>
+                                    <a href="show_user">> ที่อยู่</a>
+                                </li>
+                                <li>
+                                    <a href="show_user">> ติดต่อ</a>
                                 </li>
                             </ul>
-                            <! /.nav-second-level 
-                        </li> -->
+                             <!-- /.nav-second-level  -->
+                        </li> 
                         <li>
                             <a href="/form_login2"><i class="glyphicon glyphicon-user"></i> เข้าสู้ระบบ</a>
                         </li>
                         <li>
-                            <a href="/form_register"><i class="fa fa-file"></i> บันทึกข้อมูล</a>
+                            <a href="/form_resume"><i class="fa fa-file"></i> บันทึกข้อมูล</a>
                         </li>
                         <li>
-                            <a href="/list_user"><i class="fa fa-bars"></i> แสดงข้อมูล</a>
+                            <a href="/show_resume"><i class="fa fa-bars"></i> แสดงข้อมูล</a>
                         </li>
                     </ul>
                 </div>

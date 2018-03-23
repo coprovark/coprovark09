@@ -1,13 +1,13 @@
-@extends('layouts.main')
+@extends('layouts.main1')
 
 @section('title', 'แสดงข้อมูล')
 
 @section('content')
 
-<form action="/list_users_find" method="post">
+<form action="/list_resume_find" method="post">
 
 <div class="form-group col-sm-1">
-      <a href="/form_register"class="btn btn-primary">
+      <a href="/form_resume"class="btn btn-primary">
         <span class="glyphicon glyphicon-plus"></span>  
         เพิ่ม</a>
   </div>
@@ -71,9 +71,11 @@
                     ลบรายการ
                 </button>
 
-                <a href="/list_user_edit/{{ $item->id }}" class="btn btn-info">แก้ไข</a>   
+                <button class="btn btn-warning btn-xs">
+                <a href="/form_resume">
+                    <span class="glyphicon glyphicon-pencil"></span>  
+                    แก้ไข
                 </button>
-
             </td>
         </tr>
         @endforeach
