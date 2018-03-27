@@ -11,8 +11,8 @@
 
     <title>webapp</title>
 
-        <!-- Bootstrap Core CSS -->
-        <link rel="stylesheet" href="{{ URL::asset('asset/css/bootstrap/css/bootstrap.min.css') }}">
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="{{ URL::asset('asset/css/bootstrap/css/bootstrap.min.css') }}">
 
 <!-- MetisMenu CSS -->
 <link rel="stylesheet" href="{{ URL::asset('asset/css/metisMenu/metisMenu.min.css') }}">

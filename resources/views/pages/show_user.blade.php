@@ -21,7 +21,7 @@
         ค้นหา</button>
   </div>
 </form>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <tr class="success">
         <td><input type="checkbox"</td>
             <td>ระดับ</td>
@@ -31,7 +31,7 @@
         </tr>
         @foreach($data_list as $item)
         <tr>
-            <td>{{ $item->user_id }}</td>
+            <td>{{ $item->id }}</td>
             @php
             if($item->user_lavel == 1){
                 $user_lavel = "นักเรียน";
@@ -47,15 +47,15 @@
             <td>{{ $item->user_codename }}</td>
             
             <td>
-                <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->user_id }}')">
+                <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->id }}')">
                     <span class="glyphicon glyphicon-remove"></span>  
                     ลบรายการ
                 </button>
 
-                <button class="btn btn-warning btn-xs">
-                <a href="/form_user">
-                    <span class="glyphicon glyphicon-pencil"></span>  
-                    แก้ไข
+                <button>
+
+                  <a href="/form_user_edit/{{ $item->id }}" class="btn btn-info">แก้ไข</a>   
+                    
                 </button>
             </td>
         </tr>
@@ -63,9 +63,9 @@
     </table>
  
     <script>
-    function _confirm(user_id){
+    function _confirm(id){
         if(confirm('ยืนยันการลบข้อมูล')){
-            window.location.href = '/delete_tbuser/'+user_id;
+            window.location.href = '/delete_tbuser/'+id;
         }
     }
 </script>

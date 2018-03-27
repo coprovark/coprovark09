@@ -123,8 +123,6 @@ Route::get('/delete_user/{id}','UsersController@delete_users');
 //===============================================================//
 //function form_user_edit
 
-// Route::post('/list_user_edit/{id}','UsersController@list_user_edit');
-
 Route::get('/list_user_edit/{id}','UsersController@list_user_edit');
 
 Route::post('/list_user_update','UsersController@list_user_update');
@@ -150,12 +148,6 @@ Route::post('/form_register_save','UsersController@form_register_save');
 Route::get('/show_user','PersonalController@show_user');
 Route::post('/show_user_find','PersonalController@show_user_find');
 
-
-//  #form_personal_save
-//  Route::get('/form_personal', function () {
-//     return view('pages.form_personal'); 
-// });
-
  #form_user_save
 //  Route::get('/form_user', function () {
 //     return view('pages.form_user'); 
@@ -168,6 +160,12 @@ Route::post('/form_user_save','PersonalController@form_user_save');
 // });
 Route::get('/delete_tbuser/{user_id}','PersonalController@delete_tbuser');
 
+//function form_user_edit
+
+Route::get('/form_user_edit/{id}','PersonalController@form_user_edit');
+
+Route::post('/form_user_update','PersonalController@form_user_update');
+
  #form_user
  Route::get('/form_user', function () {
     return view('pages.form_user'); 
@@ -179,7 +177,7 @@ Route::get('/delete_tbuser/{user_id}','PersonalController@delete_tbuser');
 Route::get('/show_title','PersonalController@show_title');
 Route::post('/show_title_find','PersonalController@show_title_find');
 
-#form_user
+#form_title
 Route::get('/form_title', function () {
     return view('pages.form_title'); 
 });
@@ -194,13 +192,13 @@ Route::get('/form_title', function () {
 Route::get('/show_faculty','PersonalController@show_faculty');
 Route::post('/show_faculty_find','PersonalController@show_faculty_find');
 
-#form_user
-Route::get('/form_title', function () {
-    return view('pages.form_title'); 
+#form_faculty
+Route::get('/form_faculty', function () {
+    return view('pages.form_faculty'); 
 });
 
-#form_title_save
- Route::post('/form_title_save','PersonalController@form_title_save');
+#form_faculty_save
+ Route::post('/form_faculty_save','PersonalController@form_faculty_save');
 
 //********************************************************************************//
 
@@ -244,6 +242,21 @@ Route::get('/form_institute', function () {
 #form_institute_save
  Route::post('/form_institute_save','PersonalController@form_institute_save');
 
+
+ //********************************************************************************//
+
+#show_learning
+Route::get('/show_learning','PersonalController@show_learning');
+Route::post('/show_learning_find','PersonalController@show_learning_find');
+
+#form_learning
+Route::get('/form_learning', function () {
+    return view('pages.form_learning'); 
+});
+
+#form_learning_save
+ Route::post('/form_learning_save','PersonalController@form_learning_save');
+
  //********************************************************************************//
 
 #show_birthday
@@ -272,6 +285,132 @@ Route::get('/form_gender', function () {
 #form_gender_save
  Route::post('/form_gender_save','PersonalController@form_gender_save');
 
+//********************************************************************************//
+
+#show_status
+Route::get('/show_status','PersonalController@show_status');
+Route::post('/show_status_find','PersonalController@show_status_find');
+
+#form_status
+Route::get('/form_status', function () {
+    return view('pages.form_status'); 
+});
+
+#form_status_save
+ Route::post('/form_status_save','PersonalController@form_status_save');
+
+ #delete_status
+ Route::get('/delete_tdstatus/{status_id}','PersonalController@delete_status');
+
+
+//********************************************************************************//
+
+#show_blood
+Route::get('/show_blood','PersonalController@show_blood');
+Route::post('/show_blood_find','PersonalController@show_blood_find');
+
+#form_blood
+Route::get('/form_blood', function () {
+    return view('pages.form_blood'); 
+});
+
+#form_blood_save
+ Route::post('/form_blood_save','PersonalController@form_blood_save');
+
+ #delete_blood
+ Route::get('/delete_tdblood/{blood_id}','PersonalController@delete_blood');
+
+
+ //********************************************************************************//
+
+#show_nation
+Route::get('/show_nation','PersonalController@show_nation');
+Route::post('/show_nation_find','PersonalController@show_nation_find');
+
+#form_nation
+Route::get('/form_nation', function () {
+    return view('pages.form_nation'); 
+});
+
+#form_nation_save
+ Route::post('/form_nation_save','PersonalController@form_nation_save');
+
+ #delete_nation
+ Route::get('/delete_tdnation/{nation_id}','PersonalController@delete_nation');
+
+  //********************************************************************************//
+
+#show_race
+Route::get('/show_race','PersonalController@show_race');
+Route::post('/show_race_find','PersonalController@show_race_find');
+
+#form_race
+Route::get('/form_race', function () {
+    return view('pages.form_race'); 
+});
+
+#form_race_save
+ Route::post('/form_race_save','PersonalController@form_race_save');
+
+ #delete_nation
+ Route::get('/delete_tdrace/{race_id}','PersonalController@delete_race');
+
+//********************************************************************************//
+
+#show_religion
+Route::get('/show_religion','PersonalController@show_religion');
+Route::post('/show_religion_find','PersonalController@show_religion_find');
+
+#form_religion
+Route::get('/form_religion', function () {
+    return view('pages.form_religion'); 
+});
+
+#form_religion_save
+ Route::post('/form_religion_save','PersonalController@form_religion_save');
+
+ #delete_nation
+ Route::get('/delete_tdreligion/{religion_id}','PersonalController@delete_religion');
+
+
+//********************************************************************************//
+
+#show_address
+Route::get('/show_address','PersonalController@show_address');
+Route::post('/show_address_find','PersonalController@show_address_find');
+
+#form_address
+Route::get('/form_address', function () {
+    return view('pages.form_address'); 
+});
+
+#form_address_save
+ Route::post('/form_address_save','PersonalController@form_address_save');
+
+ #delete_nation
+ Route::get('/delete_tdaddress/{address_id}','PersonalController@delete_address');
+
+//********************************************************************************//
+
+#show_contact
+Route::get('/show_contact','PersonalController@show_contact');
+Route::post('/show_contact_find','PersonalController@show_contact_find');
+
+#form_contact
+Route::get('/form_contact', function () {
+    return view('pages.form_contact'); 
+});
+
+#form_contact_save
+ Route::post('/form_contact_save','PersonalController@form_contact_save');
+
+ #delete_nation
+ Route::get('/delete_tdcontact/{contact_id}','PersonalController@delete_contact');
+
+
+
+
+
 
 
 
@@ -290,6 +429,10 @@ Route::get('/form_resume', function () {
 
 #form_resume_save
  Route::post('/form_resume_save','PersonalController@form_resume_save');
+
+#list_resume
+Route::get('/list_resume/{id}','PersonalController@list_resume');
+
 
 
 

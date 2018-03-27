@@ -4,7 +4,9 @@
 
 @section('content')
 
-<form action="/list_resume_find" method="post">
+ <h3 class="page-header">ข้อมูลสมาชิก</h3>
+
+<form action="/show_resume_find" method="post">
 
 <div class="form-group col-sm-1">
       <a href="/form_resume"class="btn btn-primary">
@@ -21,61 +23,49 @@
         ค้นหา</button>
   </div>
 </form>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
         <tr class="success">
-        <td><input type="checkbox"</td>
-            <td>รหัสนักศึกษา</td>
-            <td>ชื่อ-สกุล</td>
-            <td>วัน เดือน ปีเกิด</td>
-            <td>สังกัด</td>
+            <td>ลำดับ</td>
+            <td>เลขที่ใบสมัคร</td>
+            <td>วันที่ใบสมัคร</td>
+            <td>ประเภทผู้ใช้งาน</td>
+            <td>รหัสนักศึกษา/อาจารย์</td>
+            <td>เลขที่บัตรประจำตัว</td>
+            <td>ชื่อ</td>
             <td>ดำเนินการ</td>
         </tr>
         @foreach($data_list as $item)
         <tr>
             <td>{{ $item->id }}</td>
-            <td>{{ $item->sid }}</td>
-            <td>{{ $item->fullName }}</td>
-            <td>{{ $item->birthDay }}</td>
+            <td>{{ $item->nos }}</td>
+            <td>{{ $item->date }}</td>
             @php
-            if($item->facultyID == 1){
-                $facultyID = "วิทยาการคอมพิวเตอร์";
-            }else if($item->facultyID == 2){
-                $facultyID = "เทคโนและอุตสาหกรรม";
-            }else if($item->facultyID == 3){
-                $facultyID = "มนุษศาสตร์และสังคมศาสตร์";
-            }else if($item->facultyID == 4){
-                $facultyID = "ครุศาสตร์";
-            }else if($item->facultyID == 5){
-                $facultyID = "เกษตรศาสตร์";
-            }else if($item->facultyID == 6){
-                $facultyID = "พยาบาลศาสตร์";
-            }else if($item->facultyID == 7){
-                $facultyID = "แพทย์แผนไทย";
-            }else if($item->facultyID == 8){
-                $facultyID = "สาธารณสุขศาสตร์";
-            }else if($item->facultyID == 9){
-                $facultyID = "บริหารธุรกิจและการจัดการ";
-            }else if($item->facultyID == 10){
-                $facultyID = "นิติศาสตร์";
+            if($item->user_lavel == 1){
+                $user_lavel = "นักเรียน";
+            }else if($item->user_lavel == 2){
+                $user_lavel = "นักศึกษา";
             }else{
-                $facultyID = "วิทยาศาสตร์";
+                $user_lavel = "อาจารย์";
             };
         @endphp
-        <td>{{ $facultyID }}</td>
-        
+            <td>{{ $user_lavel }}</td>
+            
+            <td>{{ $item->user_code }}</td>
+            <td>{{ $item->user_codename }}</td>
+            <td>{{ $item->title_name }}</td>
+            
             <td>
-
-        
                 <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->id }}')">
                     <span class="glyphicon glyphicon-remove"></span>  
                     ลบรายการ
                 </button>
 
-                <button class="btn btn-warning btn-xs">
-                <a href="/form_resume">
-                    <span class="glyphicon glyphicon-pencil"></span>  
-                    แก้ไข
-                </button>
+                <a href="/form_user_edit/{{ $item->id }}" class="btn btn-success btn-xs" role="button">แก้ไข
+                       <span class="glyphicon glyphicon-pencil"></span></a>
+
+                <a href="/list_resume/{{ $item->id }}" class="btn btn-primary btn-xs" role="button">รายละเอียด
+                       <span class="glyphicon glyphicon-list-alt"></span></a>
+
             </td>
         </tr>
         @endforeach
@@ -84,7 +74,7 @@
     <script>
     function _confirm(id){
         if(confirm('ยืนยันการลบข้อมูล')){
-            window.location.href = '/delete_user/'+id;
+            window.location.href = '/delete_tbuser/'+id;
         }
     }
 </script>

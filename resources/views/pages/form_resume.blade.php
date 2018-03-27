@@ -48,7 +48,7 @@
             <div class="row">
             <div class="container-fluid" style=";background-color:#b3c6ff;">    
                 <div class="col-md-12" style="">
-                     <label>ประวัติส่วนตัว</label><br>  
+                     <label>ประวัติส่วนตัว (Presonal Information)</label><br>  
                 </div>
                 </div>
             </div>

@@ -12,16 +12,16 @@
     <title>webapp</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ URL::asset('asset/css/bootstrap/css/bootstrap.min.css') }}">
 
-    <!-- MetisMenu CSS -->
-    <link href="css/metisMenu/metisMenu.min.css" rel="stylesheet">
+<!-- MetisMenu CSS -->
+<link rel="stylesheet" href="{{ URL::asset('asset/css/metisMenu/metisMenu.min.css') }}">
 
-    <!-- Custom CSS -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ URL::asset('asset/css/sb-admin-2.css') }}">
 
-    <!-- Custom Fonts -->
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Custom Fonts -->
+<link rel="stylesheet" href="{{ URL::asset('asset/css/font-awesome/css/font-awesome.min.css') }}">
 
 
 </head>
@@ -82,7 +82,7 @@
                                     <a href="show_institute">> สถาบันการศึกษา</a>
                                 </li>
                                 <li>
-                                    <a href="show_user">> Learning style</a>
+                                    <a href="show_learning">> Learning style</a>
                                 </li>
                                 <li>
                                     <a href="show_birthday">> วัน เดือน ปีเกิด</a>
@@ -91,25 +91,25 @@
                                     <a href="show_gender">> เพศ</a>
                                 </li>
                                 <li>
-                                    <a href="show_user">> สถานภาพ</a>
+                                    <a href="show_status">> สถานภาพ</a>
                                 </li>
                                 <li>
-                                    <a href="show_user">> หมู่เลือด</a>
+                                    <a href="show_blood">> หมู่เลือด</a>
                                 </li>
                                 <li>
-                                    <a href="show_user">> สัญชาติ</a>
+                                    <a href="show_nation">> สัญชาติ</a>
                                 </li>
                                 <li>
-                                    <a href="show_user">> เชื้อชาติ</a>
+                                    <a href="show_race">> เชื้อชาติ</a>
                                 </li>
                                 <li>
-                                    <a href="show_user">> ศาสนา</a>
+                                    <a href="show_religion">> ศาสนา</a>
                                 </li>
                                 <li>
-                                    <a href="show_user">> ที่อยู่</a>
+                                    <a href="show_address">> ที่อยู่</a>
                                 </li>
                                 <li>
-                                    <a href="show_user">> ติดต่อ</a>
+                                    <a href="show_contact">> ติดต่อ</a>
                                 </li>
                             </ul>
                              <!-- /.nav-second-level  -->
