@@ -11,17 +11,17 @@
 
 
                         <div class="form-group">
-                                <label for="inputPassword" class="col-sm-3 control-label">รหัสสภานภาพ</label>
+                                <label for="inputPassword" class="col-sm-3 control-label">รหัสหมู่เลือด</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name="BLOOD_CODE">
+                                  <input type="text" id="data" class="form-control" style="width:20%" name="BLOOD_CODE">
                                 </div>
                           </div> <br><br><br>
 
                        
                            <div class="form-group">
-                                <label for="inputPassword" class="col-sm-3 control-label">สถานภาพ</label>
+                                <label for="inputPassword" class="col-sm-3 control-label">หมู่เลือด</label>
                                 <div class="col-sm-8">
-                                     <select class="form-control" style="width:15%" name="BLOOD_NAME">
+                                     <select class="form-control" style="width:20%" name="BLOOD_NAME" onchange="getData()" id="datalist">
                                          <option value="1">A</option>
                                          <option value="2">B</option>
                                          <option value="3">O</option>
@@ -38,6 +38,13 @@
                         <br> <br> <br>
 
                 </form>
+
+<script type="text/javascript">
+     function getData(){
+           var data = document.getElementById('datalist').value;
+           document.getElementById('data').value = data;
+   }
+</script>                
 @endsection
 
 

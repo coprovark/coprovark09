@@ -10,16 +10,20 @@
                           <div class="form-group">
 
                           <div class="form-group">
-                                <label for="inputPassword" class="col-sm-3 control-label">รหัสประเภทการศึกษา</label>
+                                <label for="inputPassword" class="col-sm-3 control-label">รหัสประเภทนักศึกษา</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name="PYPE_CODE">
+                                  <input type="text" id="data" class="form-control" style="width:20%" name="PYPE_CODE">
                                 </div>
                           </div> <br><br>
                           
                           <div class="form-group">
-                                <label for="inputPassword" class="col-sm-3 control-label">ชื่อประเภทการศึกษา</label>
+                                <label for="inputPassword" class="col-sm-3 control-label">ชื่อประเภทนักศึกษา</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name="TYPE_NAME">
+                                  <select class="form-control" style="width:20%" name="TYPE_NAME" onchange="getData()" id="datalist">
+                                         <option value="1">ปกติ</option>
+                                         <option value="2">กศ.บป.</option>
+                                         <option value="3">กศ.อศ.</option>
+                                     </select> 
                                 </div>
                           </div> <br><br><br>
 
@@ -32,6 +36,13 @@
                         <br> <br> <br>
 
                 </form>
+
+<script type="text/javascript">
+     function getData(){
+           var data = document.getElementById('datalist').value;
+           document.getElementById('data').value = data;
+   }
+</script>                
 @endsection
 
 

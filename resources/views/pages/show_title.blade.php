@@ -23,8 +23,8 @@
 </form>
     <table class="table table-bordered table-striped">
         <tr class="success">
-        <td><input type="checkbox"</td>
-            <td>คำนำหน้าชื่อ	</td>
+            <td>ลำดับ</td>
+            <td>คำนำหน้าชื่อ</td>
             <td>ชื่อ-สกุล</td>
             <td>ชื่อเล่น</td>
             <td>ดำเนินการ</td>
@@ -32,18 +32,8 @@
         @foreach($data_list as $item)
         <tr>
             
-        <td>{{ $item->title_id }}</td> 
-            @php
-            if($item->title_code == 1){
-                $title_code = "นาย";
-            }else if($item->title_code == 2){
-                $title_code = "นาง";
-            }else{
-                $title_code = "นางสาว";
-            };
-        @endphp
-            <td>{{ $title_code }}</td>
-
+            <td>{{ $item->title_id }}</td> 
+            <td>{{ $item->title_code }}</td>
             <td>{{ $item->title_name }}</td> 
             <td>{{ $item->title_nicname }}</td>
             

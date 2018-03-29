@@ -23,19 +23,17 @@
 </form>
     <table class="table table-bordered">
         <tr class="success">
-        <td><input type="checkbox"</td>
+            <td>ลำดับ</td>
             <td>รหัสสัญชาติ</td>
             <td>สัญชาติ</td>
             <td>ดำเนินการ</td>
         </tr>
         @foreach($data_list as $item)
-        <tr>
-            
-          <td>{{ $item->nation_id }}</td> 
-         <td>{{ $item->nation_code }}</td> 
-         <td>{{ $item->nation_name }}</td>
-           
-           
+        <tr> 
+            <td>{{ $item->nation_id }}</td> 
+            <td>{{ $item->nation_code }}</td>             
+            <td>{{ $item->nation_name }}</td>
+    
             <td>
                 <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->nation_id }}')">
                     <span class="glyphicon glyphicon-remove"></span>  

@@ -13,7 +13,7 @@
                         <div class="form-group">
                                 <label for="inputPassword" class="col-sm-3 control-label">รหัสสภานภาพ</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name="STATUS_CODE">
+                                  <input type="text" id="data" class="form-control" style="width:20%" name="STATUS_CODE">
                                 </div>
                           </div> <br><br><br>
 
@@ -21,7 +21,7 @@
                            <div class="form-group">
                                 <label for="inputPassword" class="col-sm-3 control-label">สถานภาพ</label>
                                 <div class="col-sm-8">
-                                     <select class="form-control" style="width:15%" name="STATUS_NAME">
+                                     <select class="form-control" style="width:20%" name="STATUS_NAME" onchange="getData()" id="datalist">
                                          <option value="1">โสด</option>
                                          <option value="2">แต่งงาน</option>
                                          <option value="3">หม้าย</option>
@@ -38,6 +38,12 @@
                         <br> <br> <br>
 
                 </form>
+<script type="text/javascript">
+     function getData(){
+           var data = document.getElementById('datalist').value;
+           document.getElementById('data').value = data;
+   }
+</script>                
 @endsection
 
 

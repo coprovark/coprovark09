@@ -31,20 +31,9 @@
         @foreach($data_list as $item)
         <tr>
             
-          <td>{{ $item->status_id }}</td> 
-         <td>{{ $item->status_code }}</td> 
-            @php
-            if($item->status_name == 1){
-                $status_name = "โสด";
-            }else if($item->status_name == 2){
-                $status_name = "แต่งงาน";
-            }else if($item->status_name == 3){
-                $status_name = "หม้าย";
-            }else{
-                $status_name = "หย่าร้าง";
-            };
-        @endphp
-            <td>{{ $status_name }}</td>
+            <td>{{ $item->status_id }}</td> 
+            <td>{{ $item->status_code }}</td> 
+            <td>{{ $item->status_name }}</td>
 
            
            

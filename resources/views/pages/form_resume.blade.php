@@ -6,8 +6,8 @@
 
 
          <div class="container-fluid" style="border:1px solid black;border-radius: 0px 0px 0px 0px;"> 
-
-         <form class="form-group form-inline" action="/form_user_save" medthod="get">
+         
+         <form class="form-group form-inline" action="/form_resume_save" method="post">
 
                    
              <div class="container-fluid">
@@ -16,10 +16,10 @@
                        <label style="padding : 15%;background-color:#b3c6ff;">CO-PROVARK</label><br>
 
                        <label>เลขที่ NO.</label>
-                         <input type="text" class="form-control" style="width:55%;" name="NAME" > <br><br>
+                         <input type="text" class="form-control" style="width:65%;" name="NO" > <br><br>
                                         
                       <label>วันที่ Date</label>
-                        <input class="form-control" style="width:55%;" type="text" name="DAY">
+                        <input class="form-control" style="width:65%;" type="date" name="DATE">
                     </div>
                      <center>
                     <div class="col-md-6" style="">      
@@ -61,9 +61,9 @@
                         </div>
                                 <div class="col-md-10" style="">
                                     <div class="form-group">
-                                        <input type="radio" name="TPYEUSER" value="1" > นักเรียน 
-                                        <input type="radio" name="TPYEUSER" value="2" > นักศึกษา 
-                                        <input type="radio" name="TPYEUSER" value="3" > ครู/อาจารย์ 
+                                        <input type="radio" name="TYPE" value="1" > นักเรียน 
+                                        <input type="radio" name="TYPE" value="2" > นักศึกษา 
+                                        <input type="radio" name="TYPE" value="3" > ครู/อาจารย์ 
                                     </div>
                          </div>
                  </div>
@@ -76,7 +76,7 @@
                         </div>
                                 <div class="col-md-4" style="">
                                     <div class="form-group">
-                                        <input type="text" name="level_code" class="form-control" placeholder="รหัสนักศึกษาอ้างอิง" style="width :100%" required>
+                                        <input type="text" name="CODE" class="form-control" placeholder="รหัสนักศึกษาอ้างอิง" style="width :100%" required>
                                     </div>
                                 </div>
                                 <div class="col-md-2" style="">
@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" name="level_code" class="form-control" placeholder="เลขที่บัตรประชาชน" style="width :100%" required>
+                                        <input type="text" name="IDCARD" class="form-control" placeholder="เลขที่บัตรประชาชน" style="width :100%" required>
                                  </div>
                         </div>
                 </div>
@@ -93,11 +93,16 @@
         <div class="container-fluid">
                 <div class="row">
                         <div class="col-md-2" style="">
-                            <label>ชื่อ</label>
+                            <label>ชื่อ-สกุล</label>
                         </div>
                             <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:100%;" placeholder="่ชื่อ-สกุล" name="NAME" >
+                                        <select class="form-control" style="width:35%" name="TITLENAME">
+                                        @foreach($title as $item)
+                                                <option value="{{ $item->title_id }}">{{ $item->title_code }}</option>;
+                                        @endforeach     
+                                     </select> 
+                                        <input type="text" class="form-control" style="width:60%;" placeholder="่ชื่อ-สกุล" name="NAME" >
                                         </div>
                                 </div>
                                 <div class="col-md-2" style="">
@@ -118,11 +123,10 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <select class="form-control" style="width:100%" name="BRANCH">
-                                        <option value="01">สาขาวิทยาการคอมพิวเตอร์</option>
-                                        <option value="02">สาขาวิศวกรรมซอร์ฟแวร์</option>
-                                        <option value="03">สาขาเทคโนโลยีมัลติมีเดียและแอนิเมชัน</option>
-                                        <option value="04">สาขาเทคโนโลยีสารสนเทศ</option>
+                                        <select class="form-control" style="width:100%" name="MOJOR">
+                                        @foreach($mojor as $item)
+                                                <option value="{{ $item->mojor_code }}">{{ $item->mojor_name }}</option>;
+                                        @endforeach    
                                         </select>   
                                         </div>
                                 </div>
@@ -131,18 +135,10 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <select class="form-control" style="width:70%" name="FACULTY">
-                                        <option value="01">คณะเกษตรศาสตร์</option>
-                                        <option value="02">คณะครุศาสตร์</option>
-                                        <option value="03">คณะเทคโนโลยีอุตสาหกรรม</option>
-                                        <option value="04">คณะวิทยาการคอมพิวเตอร์</option>
-                                        <option value="05">คณะมนุษยศาสตร์และสังคมศาสตร์</option>
-                                        <option value="06">คณะพยาบาลศาสตร์</option>
-                                        <option value="07">คณะแพทย์แผนไทยและแพทย์ทางเลือก</option>
-                                        <option value="08">คณะสาธารณสุขศาสตร์</option>
-                                        <option value="09">คณะนิติศาสตร์</option>
-                                        <option value="10">คณะวิทยาศาสตร์</option>
-                                        <option value="11">คณะบริหารธุรกิจและการจัดการ</option>
+                                        <select class="form-control" style="width:100%" name="FACULTY">
+                                        @foreach($faculty as $item)
+                                                <option value="{{ $item->faculty_id }}">{{ $item->faculty_name }}</option>;
+                                        @endforeach  
                                         </select>
                                         </div>
                                 </div>
@@ -156,13 +152,10 @@
                                 </div>
                                 <div class="col-md-2" style="">
                                         <div class="form-group">
-                                        <select class="form-control" style="width:100%" name="LEVEL">
-                                        <option value="1">ปี 1</option>
-                                        <option value="2">ปี 2</option>
-                                        <option value="3">ปี 3</option>
-                                        <option value="4">ปี 4</option>
-                                        <option value="5">ปี 5</option>
-                                        <option value="6">ปี 6</option>
+                                        <select class="form-control" style="width:100%" name="LAVEL">
+                                        @foreach($faculty as $item)
+                                                <option value="{{ $item->faculty_idlavel }}">{{ $item->faculty_lavel }}</option>;
+                                        @endforeach  
                                         </select>  
                                         </div>
                                 </div>
@@ -171,7 +164,7 @@
                                 </div>
                                 <div class="col-md-1" style="width:13%">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:100%" placeholder="เกรดเฉลี่ย" name="GRADE" >
+                                        <input type="text" class="form-control" style="width:100%" placeholder="เกรดเฉลี่ย" name="GPAS" >
                                         </div>
                                 </div>
                                 <div class="col-md-2" style="">
@@ -179,48 +172,11 @@
                                 </div>
                                 <div class="col-md-3" style="">
                                         <div class="form-group">
-                                        <select class="form-control" style="width:100%" name="INSTITUTION">
-                                        <option value="001">มหาวิทยาลัยราชภัฏอุบลราชธานี</option>
-                                        <option value="002">มหาวิทยาลัยอุบลราชธานี</option>
+                                        <select class="form-control" style="width:100%" name="INSTITUTE">
+                                        @foreach($institute as $item)
+                                                <option value="{{ $item->institute_code }}">{{ $item->institute_name }}</option>;
+                                        @endforeach  
                                         </select> 
-                                        </div>
-                                </div>
-                        </div>
-        </div>
-        <br>
-        <div class="container-fluid">
-                        <div class="row">
-                                <div class="col-md-2" style="">
-                                        <label>สาขาวิชา</label>
-                                </div>
-                                <div class="col-md-4" style="">
-                                        <div class="form-group">
-                                        <select class="form-control" style="width:100%" name="BRANCH">
-                                        <option value="01">สาขาวิทยาการคอมพิวเตอร์</option>
-                                        <option value="02">สาขาวิศวกรรมซอร์ฟแวร์</option>
-                                        <option value="03">สาขาเทคโนโลยีมัลติมีเดียและแอนิเมชัน</option>
-                                        <option value="04">สาขาเทคโนโลยีสารสนเทศ</option>
-                                        </select>   
-                                        </div>
-                                </div>
-                                <div class="col-md-2" style="">
-                                        <label>คณะ</label>
-                                </div>
-                                <div class="col-md-4" style="">
-                                        <div class="form-group">
-                                        <select class="form-control" style="width:70%" name="FACULTY">
-                                        <option value="01">คณะเกษตรศาสตร์</option>
-                                        <option value="02">คณะครุศาสตร์</option>
-                                        <option value="03">คณะเทคโนโลยีอุตสาหกรรม</option>
-                                        <option value="04">คณะวิทยาการคอมพิวเตอร์</option>
-                                        <option value="05">คณะมนุษยศาสตร์และสังคมศาสตร์</option>
-                                        <option value="06">คณะพยาบาลศาสตร์</option>
-                                        <option value="07">คณะแพทย์แผนไทยและแพทย์ทางเลือก</option>
-                                        <option value="08">คณะสาธารณสุขศาสตร์</option>
-                                        <option value="09">คณะนิติศาสตร์</option>
-                                        <option value="10">คณะวิทยาศาสตร์</option>
-                                        <option value="11">คณะบริหารธุรกิจและการจัดการ</option>
-                                        </select>
                                         </div>
                                 </div>
                         </div>
@@ -233,9 +189,9 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="radio" name="TPYESTUDENT" value="1" > ปกติ 
-                                        <input type="radio" name="TPYESTUDENT" value="2" > กศ.บป. 
-                                        <input type="radio" name="TPYESTUDENT" value="3" > กศ.อศ. 
+                                        <input type="radio" name="STUDENTTYPE" value="1" > ปกติ 
+                                        <input type="radio" name="STUDENTTYPE" value="2" > กศ.บป. 
+                                        <input type="radio" name="STUDENTTYPE" value="3" > กศ.อศ. 
                                         </div>
                                 </div>
                                 <div class="col-md-2" style="">
@@ -243,11 +199,11 @@
                                 </div>
                                 <div class="col-md-3" style="">
                                         <div class="form-group">
-                                        <input type="checkbox" name="Style" value="1" > V
-                                        <input type="checkbox" name="Style" value="2" > A
-                                        <input type="checkbox" name="Style" value="3" > R
-                                        <input type="checkbox" name="Style" value="4" > K
-                                        <input type="checkbox" name="Style" value="6" > Model
+                                        <input type="checkbox" name="STYLE" value="1" > V
+                                        <input type="checkbox" name="STYLE" value="2" > A
+                                        <input type="checkbox" name="STYLE" value="3" > R
+                                        <input type="checkbox" name="STYLE" value="4" > K
+                                        <input type="checkbox" name="STYLE" value="5" > Model
                                         </div>
                                 </div>
                         </div>
@@ -260,7 +216,7 @@
                                 </div>
                                 <div class="col-md-3" style="">
                                         <div class="form-group">
-                                        <input class="form-control form-control-sm" type="Date" name="ฺBRITHDAY">
+                                        <input class="form-control form-control-sm" type="Date" id="date" onchange="calAge(this);" name="BIRTHDAY">
                                         </div>
                                 </div>
                                 <div class="col-md-1" style="">
@@ -268,7 +224,7 @@
                                 </div>
                                 <div class="col-md-2" style="">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:60%;" placeholder="" name="AGE" >
+                                        <input type="text" id="age" class="form-control" style="width:60%;" placeholder="อายุ" name="AGE" >
                                         </div>
                                 </div>
                                 <div class="col-md-1" style="">
@@ -278,6 +234,7 @@
                                         <div class="form-group">
                                         <input type="radio" name="GENDER" value="1" > ชาย 
                                         <input type="radio" name="GENDER" value="2" > หญิง 
+                                        <input type="radio" name="GENDER" value="3" > เพศทางเลือก 
                                         </div>
                                 </div>
                         </div>
@@ -290,7 +247,7 @@
                                 </div>
                                 <div class="col-md-2" style="">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:100%;" placeholder="น้ำหนัก" name="WEIGHT" >
+                                        <input type="text" class="form-control" style="width:100%;" placeholder="น้ำหนัก" name="WEIGTH" >
                                         </div>
                                 </div>
                                 <div class="col-md-1" style="">
@@ -306,10 +263,10 @@
                                 </div>
                                 <div class="col-md-2" style="">
                                         <div class="form-group">
-                                        <input type="radio" name="Style" value="2" > A
-                                        <input type="radio" name="Style" value="3" > B
-                                        <input type="radio" name="Style" value="4" > O
-                                        <input type="radio" name="Style" value="6" > AB
+                                        <input type="radio" name="BLOOD" value="1" > A
+                                        <input type="radio" name="BLOOD" value="2" > B
+                                        <input type="radio" name="BLOOD" value="3" > O
+                                        <input type="radio" name="BLOOD" value="4" > AB
                                         </div>
                                 </div>
                         </div>
@@ -322,18 +279,22 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="radio" name="TPYESTUDENT" value="1" > โสด
-                                        <input type="radio" name="TPYESTUDENT" value="2" > แต่งงาน
-                                        <input type="radio" name="TPYESTUDENT" value="3" > หม้าย 
-                                        <input type="radio" name="TPYESTUDENT" value="3" > อย่าร้าง 
+                                        <input type="radio" name="STATUS" value="1" > โสด
+                                        <input type="radio" name="STATUS" value="2" > แต่งงาน
+                                        <input type="radio" name="STATUS" value="3" > หม้าย 
+                                        <input type="radio" name="STATUS" value="4" > หย่าร้าง 
                                         </div>
                                 </div>
                                 <div class="col-md-2" style="">
                                         <label>สัญชาติ</label>
                                 </div>
-                                <div class="col-md-3" style="">
+                                <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" name="level_code" class="form-control" id="exampleInputPassword1" placeholder="สัญชาติ" style="width :100%" required>
+                                        <select class="form-control" style="width:100%" name="NATION">
+                                                @foreach($nation as $item)
+                                                <option value="{{ $item->nation_code }}">{{ $item->nation_name }}</option>;
+                                                @endforeach    
+                                        </select>   
                                         </div>
                                 </div>
                         </div>
@@ -346,15 +307,23 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" name="level_code" class="form-control" id="exampleInputPassword1" placeholder="เชื้อชาติ" style="width :100%" required>
+                                        <select class="form-control" style="width:100%" name="RACE">
+                                        @foreach($race as $item)
+                                                <option value="{{ $item->race_code }}">{{ $item->race_name }}</option>;
+                                        @endforeach    
+                                        </select>   
                                         </div>
                                 </div>
                                 <div class="col-md-2" style="">
                                         <label>ศาสนา</label>
                                 </div>
-                                <div class="col-md-3" style="">
+                                <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" name="level_code" class="form-control" id="exampleInputPassword1" placeholder="ศาสนา" style="width :100%" required>
+                                        <select class="form-control" style="width:100%" name="RELIGION">
+                                        @foreach($religion as $item)
+                                                <option value="{{ $item->religion_code }}">{{ $item->religion_name }}</option>;
+                                        @endforeach    
+                                        </select>   
                                         </div>
                                 </div>
                         </div>
@@ -367,7 +336,7 @@
                                 </div>
                                 <div class="col-md-10" style="">
                                         <div class="form-group">
-                                        <textarea name="area" class="form-control" style="width :750px;height:150px;" placeholder="ที่อยู่ตามภูมิลำเนา" ></textarea>
+                                        <textarea name="PERMANADDRESS" class="form-control" style="width :750px;height:150px;" placeholder="ที่อยู่ตามภูมิลำเนา" ></textarea>
                                         </div>
                                 </div>
                         </div>
@@ -380,7 +349,7 @@
                                 </div>
                                 <div class="col-md-10" style="">
                                         <div class="form-group">
-                                        <textarea name="area" class="form-control" style="width :750px;height:150px;" placeholder="ที่อยู่ปัจจุบัน" ></textarea>
+                                        <textarea name="PRESENTANADDRESS" class="form-control" style="width :750px;height:150px;" placeholder="ที่อยู่ปัจจุบัน" ></textarea>
                                         </div>
                                 </div>
                         </div>
@@ -393,7 +362,7 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:100%;" placeholder="่เบอร์โทรศัพท์" name="NAME" >
+                                        <input type="text" class="form-control" style="width:100%;" placeholder="่เบอร์โทรศัพท์" name="PHONE" >
                                         </div>
                                 </div>
                                 <div class="col-md-2" style="">
@@ -401,7 +370,7 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:100%;" placeholder="มือถือ" name="NICKNAME" >
+                                        <input type="text" class="form-control" style="width:100%;" placeholder="มือถือ" name="MOBILE" >
                                         </div>
                                 </div>
                         </div>
@@ -414,7 +383,7 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:100%;" placeholder="่E-mail" name="NAME" >
+                                        <input type="text" class="form-control" style="width:100%;" placeholder="่E-mail" name="EMAIL" >
                                         </div>
                                 </div>
                                 <div class="col-md-2" style="">
@@ -422,7 +391,7 @@
                                 </div>
                                 <div class="col-md-4" style="">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:100%;" placeholder="Facebook" name="NICKNAME" >
+                                        <input type="text" class="form-control" style="width:100%;" placeholder="Facebook" name="FACEBOOK" >
                                         </div>
                                 </div>
                         </div>
@@ -435,23 +404,36 @@
                                 </div>
                                 <div class="col-md-10" style="">
                                         <div class="form-group">
-                                        <input type="text" class="form-control" style="width:350%;" placeholder="่web site" name="NAME" >
+                                        <input type="text" class="form-control" style="width:350%;" placeholder="่web site" name="WEBSITE" >
                                         </div>
                                 </div>
                         </div>
-        </div><br><br>
+        </div><br><br> -->
 
                <center>
                         <button type="submit" class="btn btn-primary">บันทึก</button>
-                        <a type="button" href="/form_register" class="btn btn-danger">ยกเลิก</a>                      
+                        <a type="button" href="/form_resume" class="btn btn-danger">ยกเลิก</a>                      
                 </center>
         
 </form>
+
+
         </div>
         </div>
         </div> <!---divend -->	
 <br>
 <br>	
-		
+
+	
 
 @endsection
+
+<script language="javascript">
+function calAge(o){
+     var tmp = o.value.split("-");
+     var current = new Date();
+     var current_year = current.getFullYear();
+     document.getElementById("age").value = current_year - tmp[0];
+}
+</script>
+	

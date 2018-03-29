@@ -12,23 +12,23 @@
                           <div class="form-group">
                                 <label for="inputPassword" class="col-sm-3 control-label">รหัสคณะ</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name="FACULTY_CODE">
+                                  <input type="text" id="data" class="form-control" name="FACULTY_CODE">
                                 </div>
                           </div> <br><br>
 
                            <div class="form-group">
                           <label for="inputPassword" class="col-sm-3 control-label">คณะ</label>
                            <div class="col-sm-8">
-                              <select name="FACULTY_NAME" class="form-control">
-                                <option value="1">วิทยาการคอมพิวเตอร์</option>
-                                <option value="2">เทคโนและอุตสาหกรรม</option>
-                                <option value="3">มนุษศาสตร์และสังคมศาสตร์</option>
-                                <option value="4">ครุศาสตร์</option>
-                                <option value="5">เกษตรศาสตร์</option>
-                                <option value="6">พยาบาลศาสตร์</option>
-                                <option value="7">แพทย์แผนไทย</option>
-                                <option value="8">สาธารณสุขศาสตร์</option>
-                                <option value="9">บริหารธุรกิจและการจัดการ</option>
+                              <select name="FACULTY_NAME" class="form-control" onchange="getData()" id="datalist">
+                                <option value="01">วิทยาการคอมพิวเตอร์</option>
+                                <option value="02">เทคโนและอุตสาหกรรม</option>
+                                <option value="03">มนุษศาสตร์และสังคมศาสตร์</option>
+                                <option value="04">ครุศาสตร์</option>
+                                <option value="05">เกษตรศาสตร์</option>
+                                <option value="06">พยาบาลศาสตร์</option>
+                                <option value="07">แพทย์แผนไทย</option>
+                                <option value="08">สาธารณสุขศาสตร์</option>
+                                <option value="09">บริหารธุรกิจและการจัดการ</option>
                                 <option value="10">นิติศาสตร์</option>
                                 <option value="11">วิทยาศาสตร์</option>
                               </select>
@@ -64,6 +64,14 @@
                         <br> <br> <br>
 
                 </form>
+
+<script type="text/javascript">
+     function getData(){
+           var data = document.getElementById('datalist').value;
+           document.getElementById('data').value = data;
+   }
+</script>      
+
 @endsection
 
 

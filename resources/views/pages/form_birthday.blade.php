@@ -10,11 +10,11 @@
                           <div class="form-group">
 
                           <div class="form-group">
-                                <label for="inputPassword" class="col-sm-3 control-label">วัน เดือน ปีเกิด</label>
+                                <label  class="col-sm-3 control-label">วัน เดือน ปีเกิด</label>
                                 <div class="col-sm-3">
                                 <input type="date" id="date" onchange="calAge(this);" class="form-control" placeholder="วว//ดด/ปปปป" name="BIRTHDAY" required>
                                 </div>
-                                <label for="inputPassword" class="col-sm-1 control-label">อายุ (ปี)</label>
+                                <label class="col-sm-1 control-label">อายุ (ปี)</label>
                                 <div class="col-sm-2">
                                 <input type="text" id="age" class="form-control" placeholder="อายุ">
                                 </div>

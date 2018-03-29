@@ -33,16 +33,7 @@
             
             <td>{{ $item->gender_id }}</td>
             <td>{{ $item->gender_code }}</td> 
-            @php
-            if($item->gender_name == 1){
-                $facultyID = "ชาย";
-            }else if($item->gender_name == 2){
-                $facultyID = "หญิง";
-            }else{
-                $gender_name = "เพศทางเลือก";
-            };
-        @endphp
-           <td>{{ $gender_name }}</td>
+           <td>{{ $item->gender_name }}</td>
      
            
             

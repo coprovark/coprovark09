@@ -36,34 +36,24 @@
         </tr>
         @foreach($data_list as $item)
         <tr>
-            <td>{{ $item->id }}</td>
-            <td>{{ $item->nos }}</td>
-            <td>{{ $item->date }}</td>
-            @php
-            if($item->user_lavel == 1){
-                $user_lavel = "นักเรียน";
-            }else if($item->user_lavel == 2){
-                $user_lavel = "นักศึกษา";
-            }else{
-                $user_lavel = "อาจารย์";
-            };
-        @endphp
-            <td>{{ $user_lavel }}</td>
-            
-            <td>{{ $item->user_code }}</td>
-            <td>{{ $item->user_codename }}</td>
-            <td>{{ $item->title_name }}</td>
+            <td>{{ $item->main_id }}</td>
+            <td>{{ $item->main_no }}</td>
+            <td>{{ $item->main_date }}</td>
+            <td>{{ $item->user_lavel }}</td>
+            <td>{{ $item->main_code }}</td>
+            <td>{{ $item->main_idcard }}</td>
+            <td>{{ $item->title_code }}{{ $item->main_name }}</td>
             
             <td>
-                <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->id }}')">
+                <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->main_id }}')">
                     <span class="glyphicon glyphicon-remove"></span>  
                     ลบรายการ
                 </button>
 
-                <a href="/form_user_edit/{{ $item->id }}" class="btn btn-success btn-xs" role="button">แก้ไข
+                <a href="/form_main_edit/{{ $item->main_id }}" class="btn btn-success btn-xs" role="button">แก้ไข
                        <span class="glyphicon glyphicon-pencil"></span></a>
 
-                <a href="/list_resume/{{ $item->id }}" class="btn btn-primary btn-xs" role="button">รายละเอียด
+                <a href="/list_resume/{{ $item->main_id }}" class="btn btn-primary btn-xs" role="button">รายละเอียด
                        <span class="glyphicon glyphicon-list-alt"></span></a>
 
             </td>
@@ -72,9 +62,9 @@
     </table>
  
     <script>
-    function _confirm(id){
+    function _confirm(main_id){
         if(confirm('ยืนยันการลบข้อมูล')){
-            window.location.href = '/delete_tbuser/'+id;
+            window.location.href = '/delete_tb_main/'+main_id;
         }
     }
 </script>

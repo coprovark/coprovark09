@@ -331,6 +331,7 @@ Route::post('/show_nation_find','PersonalController@show_nation_find');
 Route::get('/form_nation', function () {
     return view('pages.form_nation'); 
 });
+// Route::post('/form_nation','PersonalController@form_nation');
 
 #form_nation_save
  Route::post('/form_nation_save','PersonalController@form_nation_save');
@@ -413,10 +414,7 @@ Route::get('/form_contact', function () {
 
 
 
-
-
-
- //********************************************************************************//
+ //*********************************************************************************************************************************//
 
 #show_resume
 Route::get('/show_resume','PersonalController@show_resume');
@@ -428,14 +426,32 @@ Route::get('/form_resume', function () {
 });
 
 #form_resume_save
- Route::post('/form_resume_save','PersonalController@form_resume_save');
+Route::post('/form_resume_save','PersonalController@form_resume_save');
 
 #list_resume
 Route::get('/list_resume/{id}','PersonalController@list_resume');
 
+Route::get('/form_resume','PersonalController@list');
 
 
 
+ //==========================================================================================================================================
+#Files
 
- //===============================edit===================================//
+// Route::get('/upload1', function () {
+//     return view('file.upload'); 
+// });
+Route::get('/upload1','FileController@show');
+Route::post('/upload1','FileController@upload');
+
+#download
+Route::get('/dl/{path}/{name}','FileController@dl');
+
+#delete
+Route::get('/rm/{ID}','FileController@rm');
+
+#Edit
+Route::get('/ed/{ID}','FileController@ed');
+Route::post('/update123','FileController@update123');
+
 

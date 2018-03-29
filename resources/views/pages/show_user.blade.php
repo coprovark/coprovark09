@@ -32,31 +32,18 @@
         @foreach($data_list as $item)
         <tr>
             <td>{{ $item->id }}</td>
-            @php
-            if($item->user_lavel == 1){
-                $user_lavel = "นักเรียน";
-            }else if($item->user_lavel == 2){
-                $user_lavel = "นักศึกษา";
-            }else{
-                $user_lavel = "อาจารย์";
-            };
-        @endphp
-            <td>{{ $user_lavel }}</td>
-            
+            <td>{{ $item->user_lavel }}</td>    
             <td>{{ $item->user_code }}</td>
             <td>{{ $item->user_codename }}</td>
             
             <td>
-                <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->id }}')">
-                    <span class="glyphicon glyphicon-remove"></span>  
-                    ลบรายการ
-                </button>
+              
+                <a onclick="return _confirm('{{ $item->id }}')" class="btn btn-danger btn-xs" role="button">ลบรายการ
+                       <span class="glyphicon glyphicon-remove"></span></a>
 
-                <button>
+                <a href="/form_user_edit/{{ $item->id }}" class="btn btn-success btn-xs" role="button">แก้ไข
+                       <span class="glyphicon glyphicon-pencil"></span></a>
 
-                  <a href="/form_user_edit/{{ $item->id }}" class="btn btn-info">แก้ไข</a>   
-                    
-                </button>
             </td>
         </tr>
         @endforeach

@@ -670,6 +670,14 @@ public function delete_nation($nation_id){
   return redirect('show_nation');
 }
 
+// public function form_nation(){
+//   $na = DB::table('tbnation')
+//       ->select('*')
+//       ->get();
+//   return view('pages.show_nation',[
+
+//   ]);
+// }
 #show_race==========================================================================================================  
 public function show_race()
 {
@@ -893,10 +901,10 @@ public function delete_contact($contact_id){
 public function show_resume()
 {
     $find= '';
-    $users = DB::table('tbuser')
-             ->join('tbnodate','tbuser.id','=', 'tbnodate.id')
-             ->join('tbtitle','tbuser.id','=','tbtitle.title_id')
-             ->select('tbuser.*','tbnodate.nos','tbnodate.date','tbtitle.*')
+    $users = DB::table('tb_main')
+             ->join('tbuser','tb_main.main_type','=','tbuser.user_idlavel')
+             ->join('tbtitle','tb_main.main_titlename','=','tbtitle.title_idcode')
+             ->select('tb_main.*','tbtitle.*','tbuser.*')
              ->get();
 
     return view('pages.show_resume',[
@@ -909,25 +917,91 @@ public function show_resume()
 public function show_resume_find(Request $req)
 {
     $find = $req->find;
-    $users =  DB::table('tbuser')
-          ->join('tbnodate','tbuser.id','=', 'tbnodate.id')
-          ->join('tbtitle','tbuser.id','=','tbtitle.title_id')
-          ->select('tbuser.*','tbnodate.nos','tbnodate.date','tbtitle.*')
-          ->where('id','like',$find)
+    $users =  DB::table('tb_main')
+          ->join('tbuser','tb_main.main_type','=','tbuser.user_idlavel')
+          ->join('tbtitle','tb_main.main_titlename','=','tbtitle.title_idcode')
+          ->select('tb_main.*','tbtitle.*','tbuser.*')
+          ->where('tb_main.main_id','=',$find)
           ->get();
-    return view('pages.show_user',[
+    return view('pages.show_resume',[
       'data_list' => $users,
       'find'      => $find
     ]);
 }
 
+#list_resume
+public function list_resume(Request $req){
+  $id = $req->id;
+  $users = DB::table('tb_main')
+             ->join('tbtitle','tb_main.main_titlename','=','tbtitle.title_idcode')
+             ->join('tbfaculty','tb_main.main_faculty','=','tbfaculty.faculty_code')
+             ->join('tbmojor','tb_main.main_mojor','=','tbmojor.mojor_code')
+             ->join('tbtype','tb_main.main_studenttype','=','tbtype.type_code')
+             ->join('tbinstitute','tb_main.main_institute','=','tbinstitute.institute_code')
+             ->join('tbgender','tb_main.main_gender','=','tbgender.gender_code')
+             ->join('tbstatus','tb_main.main_status','=','tbstatus.status_code')
+             ->join('tbblood','tb_main.main_blood','=','tbblood.blood_code')
+             ->join('tbnation','tb_main.main_nation','=','tbnation.nation_code')
+             ->join('tbrace','tb_main.main_race','=','tbrace.race_code')
+             ->join('tbreligion','tb_main.main_religion','=','tbreligion.religion_code')
+             ->join('tbuser','tb_main.main_type','=','tbuser.user_idlavel')
+          ->select('tb_main.*', 
+                     'tbtitle.*',
+                     'tbfaculty.*',
+                     'tbmojor.*',
+                     'tbtype.*',
+                     'tbinstitute.*',
+                     'tbstatus.*',
+                     'tbblood.*',
+                     'tbgender.*',    
+                     'tbnation.*',
+                     'tbrace.*',
+                     'tbreligion.*',
+                     'tbuser.*')
+          ->where('tb_main.main_id', '=', $id)
+          ->get();
+
+  return view('pages.list_resume', [
+     'users'=>$users
+  ]);
+}    
+
 #form_resume_save     
 public function form_resume_save(Request $req){
-  $status = DB::table('tbuser')->insert(
-    [
-      'user_lavel'        => $req->USER_LAVEL,
-      'user_code'         => $req->USER_CODE,
-      'user_codename'     => $req->USER_CODENAME
+  $status = DB::table('tb_main')->insert(
+    [    
+      'main_no'           => $req->NO,
+      'main_date'         => $req->DATE,
+      'main_type'         => $req->TYPE,
+      'main_code'         => $req->CODE,
+      'main_idcard'       => $req->IDCARD,
+      'main_titlename'    => $req->TITLENAME,
+      'main_name'         => $req->NAME,
+      'main_nickname'     => $req->NICKNAME,
+      'main_mojor'        => $req->MOJOR,
+      'main_faculty'      => $req->FACULTY,
+      'main_lavel'        => $req->LAVEL,
+      'main_gpa'          => $req->GPAS,
+      'main_institute'    => $req->INSTITUTE,
+      'main_studenttype'  => $req->STUDENTTYPE,
+      'main_style'        => $req->STYLE,
+      'main_birthday'     => $req->BIRTHDAY,
+      'main_age'          => $req->AGE,
+      'main_gender'       => $req->GENDER,
+      'main_weigth'       => $req->WEIGTH,
+      'main_height'       => $req->HEIGHT,
+      'main_blood'        => $req->BLOOD,
+      'main_status'       => $req->STATUS,
+      'main_nation'       => $req->NATION,
+      'main_race'         => $req->RACE,
+      'main_religion'     => $req->RELIGION,
+      'main_permenAddress'    => $req->PERMANADDRESS,
+      'main_presentAddress'   => $req->PRESENTANADDRESS,
+      'main_phone'        => $req->PHONE,
+      'main_mobile'       => $req->MOBILE,
+      'main_Email'        => $req->EMAIL,
+      'main_facebook'     => $req->FACEBOOK,
+      'main_website'      => $req->WEBSITE,
     ]
   );
   if($status){
@@ -937,87 +1011,29 @@ public function form_resume_save(Request $req){
   } 
 }
 
-// #delete_tbuser
-// public function delete_tbuser($id){
-//   DB::table('tbuser')
-//       ->where('id', '=', $id)
-//       ->delete();
-//   return redirect('show_user');
-// }      
+ //list
+ public function list(){
+  $titlename = DB::table('tbtitle')->select('*')->get();
+  $mojor = DB::table('tbmojor')->select('*')->get();
+  $faculty = DB::table('tbfaculty')->select('*')->get();
+  $institute = DB::table('tbinstitute')->select('*')->get();
+  $type = DB::table('tbtype')->select('*')->get();
+  $nation = DB::table('tbnation')->select('*')->get();
+  $race = DB::table('tbrace')->select('*')->get();
+  $religion = DB::table('tbreligion')->select('*')->get();
+  return view('pages.form_resume',[
+      'title'       =>$titlename,
+      'mojor'       =>$mojor,
+      'faculty'     =>$faculty,
+      'institute'   =>$institute,
+      'type'        =>$type,
+      'nation'      =>$nation,
+      'race'        =>$race,
+      'religion'    =>$religion
+      
+ ]);
+}
 
-// //form_user_edit
-// public function form_user_edit(Request $req){
-//   $find = $req->id;
-//   $user = DB::table('tbuser')
-//         ->select('*')
-//         ->where('id','=',$find)
-//         ->get();
-
-//   return view('pages.form_user_edit',[
-//     'user' => $user,
-    
-//   ]);
-// }
-
-// //form_user_update
-// public function form_user_update(Request $req){
-//   $user_id           = $req->ID;
-//   $user_code         = $req->USER_CODE;
-//   $user_codename     = $req->USER_CODENAME;
-//   $data = [
-//       'user_code'    =>$user_code,
-//       'user_codename'=>$user_codename
-//   ];
-//   $status = DB::table('tbuser')
-//               ->where('id', $user_id)
-//               ->update($data);
-//   return redirect('show_user');
-// }
-
-#list_resume
-public function list_resume(Request $req){
-  $id = $req->id;
-  $users = DB::table('tbuser')
-      ->join('tbnodate','tbuser.id','=', 'tbnodate.id')
-      ->join('tbtitle','tbuser.id','=','tbtitle.title_id')
-      ->join('tbfaculty','tbuser.id','=','tbfaculty.faculty_id')
-      ->join('tbmojor','tbuser.id','=','tbmojor.mojor_id')
-      ->join('tbtype','tbuser.id','=','tbtype.type_id')
-      ->join('tbinstitute','tbuser.id','=','tbinstitute.institute_id')
-      ->join('tblearning','tbuser.id','=','tblearning.learning_id')
-      ->join('tbbirthday','tbuser.id','=','tbbirthday.birthday_id')
-      ->join('tbgender','tbuser.id','=','tbgender.gender_id')
-      ->join('tbstatus','tbuser.id','=','tbstatus.status_id')
-      ->join('tbblood','tbuser.id','=','tbblood.blood_id')
-      ->join('tbnation','tbuser.id','=','tbnation.nation_id')
-      ->join('tbrace','tbuser.id','=','tbrace.race_id')
-      ->join('tbreligion','tbuser.id','=','tbreligion.religion_id')
-      ->join('tbaddress','tbuser.id','=','tbaddress.address_id')
-      ->join('tbcontact','tbuser.id','=','tbcontact.contact_id')
-      ->select('tbuser.*', 
-              'tbnodate.*',
-              'tbtitle.*',
-              'tbfaculty.*',
-              'tbmojor.*',
-              'tbtype.*',
-              'tbinstitute.*',
-              'tblearning.*',
-              'tbbirthday.*',
-              'tbgender.*',
-              'tbstatus.*',
-              'tbblood.*',
-              'tbnation.*',
-              'tbrace.*',
-              'tbreligion.*',
-              'tbaddress.*',
-              'tbcontact.*')
-      ->where('tbuser.id', '=', $id)
-      ->get();
-
-  return view('pages.list_resume', [
-     'users'=>$users
-  ]);
-}    
 
 
 

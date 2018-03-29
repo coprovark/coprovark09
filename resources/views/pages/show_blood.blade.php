@@ -23,7 +23,7 @@
 </form>
     <table class="table table-bordered">
         <tr class="success">
-        <td><input type="checkbox"</td>
+           <td>ลำดับ</td>
             <td>รหัสหมู่เลือด</td>
             <td>หมู่เลือด</td>
             <td>ดำเนินการ</td>
@@ -31,20 +31,9 @@
         @foreach($data_list as $item)
         <tr>
             
-          <td>{{ $item->blood_id }}</td> 
-         <td>{{ $item->blood_code }}</td> 
-            @php
-            if($item->blood_name == 1){
-                $blood_name = "A";
-            }else if($item->blood_name == 2){
-                $blood_name = "B";
-            }else if($item->blood_name == 3){
-                $blood_name = "O";
-            }else{
-                $blood_name = "AB";
-            };
-        @endphp
-            <td>{{ $blood_name }}</td>
+            <td>{{ $item->blood_id }}</td> 
+            <td>{{ $item->blood_code }}</td> 
+            <td>{{ $item->blood_name }}</td>
 
            
            

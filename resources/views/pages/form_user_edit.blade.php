@@ -44,7 +44,7 @@
                          
                           
                   <center>
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <button type="submit" class="btn btn-primary" onclick="newDoc()">บันทึก</button>
                         <a type="button" href="/form_user" class="btn btn-danger">ยกเลิก</a>                      
                 </center>
                         <br> <br> <br>
@@ -52,6 +52,14 @@
                 </form>
 
 @endforeach()
+
+<script>
+function newDoc() {
+    if(confirm('ยืนยันการบันทึก')){
+    window.location.assign("")
+   }
+}
+</script>  
 @endsection
 
 

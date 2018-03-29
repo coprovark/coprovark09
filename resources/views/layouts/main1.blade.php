@@ -76,7 +76,7 @@
                                     <a href="show_mojor">> สาขา</a>
                                 </li>
                                 <li>
-                                    <a href="show_type">> ประเภทการศึกษา</a>
+                                    <a href="show_type">> ประเภทนักศึกษา</a>
                                 </li>
                                 <li>
                                     <a href="show_institute">> สถาบันการศึกษา</a>

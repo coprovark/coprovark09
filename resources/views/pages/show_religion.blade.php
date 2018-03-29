@@ -31,20 +31,11 @@
         @foreach($data_list as $item)
         <tr>
             
-          <td>{{ $item->religion_id }}</td> 
-         <td>{{ $item->religion_code }}</td> 
-            @php
-            if($item->religion_name == 1){
-                $religion_name = "พุทธ";
-    
-            }else{
-                $religion_name = "คริส";
-            };
-        @endphp
-            <td>{{ $religion_name }}</td>
+            <td>{{ $item->religion_id }}</td> 
+            <td>{{ $item->religion_code }}</td> 
+            <td>{{ $item->religion_name }}</td>
 
-           
-           
+             
             <td>
                 <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->religion_id }}')">
                     <span class="glyphicon glyphicon-remove"></span>  

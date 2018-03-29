@@ -13,7 +13,7 @@
                         <div class="form-group">
                                 <label for="inputPassword" class="col-sm-3 control-label">รหัสสภานภาพ</label>
                                 <div class="col-sm-8">
-                                  <input type="text" class="form-control" name="RELIGION_CODE">
+                                  <input type="text" id="data" class="form-control" style="width:20%" name="RELIGION_CODE">
                                 </div>
                           </div> <br><br><br>
 
@@ -21,7 +21,7 @@
                            <div class="form-group">
                                 <label for="inputPassword" class="col-sm-3 control-label">สถานภาพ</label>
                                 <div class="col-sm-8">
-                                     <select class="form-control" style="width:15%" name="RELIGION_NAME">
+                                     <select class="form-control" style="width:20%" name="RELIGION_NAME" onchange="getData()" id="datalist">
                                          <option value="1">พุทธ</option>
                                          <option value="2">คริส</option>
                                     
@@ -37,6 +37,13 @@
                         <br> <br> <br>
 
                 </form>
+
+<script type="text/javascript">
+     function getData(){
+           var data = document.getElementById('datalist').value;
+           document.getElementById('data').value = data;
+   }
+</script>                
 @endsection
 
 

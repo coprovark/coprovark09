@@ -31,23 +31,11 @@
         @foreach($data_list as $item)
         <tr>
             
-          <td>{{ $item->race_id }}</td> 
-         <td>{{ $item->race_code }}</td> 
-            @php
-            if($item->race_name == 1){
-                $race_name = "ไทย";
-            }else if($item->race_name == 2){
-                $race_name = "ลาว";
-            }else if($item->race_name == 3){
-                $race_name = "กัมภูชา";
-            }else{
-                $race_name = "เวียดนาม";
-            };
-        @endphp
-            <td>{{ $race_name }}</td>
+            <td>{{ $item->race_id }}</td> 
+            <td>{{ $item->race_code }}</td> 
+            <td>{{ $item->race_name }}</td>
 
-           
-           
+              
             <td>
                 <button class="btn btn-danger btn-xs" onclick="return _confirm('{{ $item->race_id }}')">
                     <span class="glyphicon glyphicon-remove"></span>  

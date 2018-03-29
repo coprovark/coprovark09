@@ -12,8 +12,9 @@
     }
 </style>
 
+
 <div class="row" style="background:linear-gradient(white,#e6e6e6);">
-<button type="button" class="btn btn-default navbar-btn">ย้อนกลับ</button>
+<button type="button" class="btn btn-default navbar-btn" onclick="goBack()">ย้อนกลับ</button>
     <h3 class="fa fa-hand-o-right btn-lg"> รายละเอียดสมาชิก</h3>
 </div>
 <br>
@@ -26,8 +27,8 @@
 			</div>
 		</div>
 		<div class="row" style="padding:10px 0 0 10px;">
-			<label>เลขที่</label> {{ $item->nos }}<br>
-			<label>วันที่</label> {{ $item->date }}
+			<label>เลขที่</label> {{ $item->main_no }}<br>
+			<label>วันที่</label> {{ $item->main_date }}
 		</div>
 	</div>
 	<div class="col-sm-8" style="border-bottom:1px solid black; border-top:1px solid black; height:150px;">
@@ -57,25 +58,25 @@
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>รหัสนักศึกษา</b></td>
-					<td class="col-sm-3">{{ $item->user_code }}</td>
+					<td class="col-sm-3">{{ $item->main_code }}</td>
 					<td class="col-sm-3"><b>เลขที่บัตรประจำตัวประชาชน</b></td>
-					<td class="col-sm-4">{{ $item->user_codename }}</td>
+					<td class="col-sm-4">{{ $item->main_idcard }}</td>
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>ชื่อ-สกุล</b></td>
-					<td class="col-sm-4">{{ $item->title_code }}{{ $item->title_name }}</td>
+					<td class="col-sm-4">{{ $item->title_code }}{{ $item->main_name }}</td>
 					<td class="col-sm-2"><b>ชื่อเล่น</b></td>
-					<td class="col-sm-4">{{ $item->title_nicname }}</td>
+					<td class="col-sm-4">{{ $item->main_nickname }}</td>
 			</table>
-			<table class="table" style="margin-bottom: 0px;">
+			 <table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>สาขาวิชา</b></td>
 					<td class="col-sm-4">{{ $item->mojor_name }}</td>
 					<td class="col-sm-2"><b>คณะ</b></td>
-					<td class="col-sm-4">{{ $item->faculty_name	}}</td>
+					<td class="col-sm-4">{{ $item->faculty_name }}</td>
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>ชั้นปีที่</b></td>
-					<td class="col-sm-2">{{ $item->faculty_lavel }}</td>
+					<td class="col-sm-2">{{ $item->main_lavel }}</td>
 					<td class="col-sm-1"><b>เกรด</b></td>
 					<td class="col-sm-1">{{ $item->GPA }}</td>
 					<td class="col-sm-2"><b>สถาบันการศึกษา</b></td>
@@ -85,21 +86,21 @@
 					<td class="col-sm-2"><b>ประเภทนักศึกษา</b></td>
 					<td class="col-sm-4">{{ $item->type_name }}</td>
 					<td class="col-sm-2"><b>Learning Style</b></td>
-					<td class="col-sm-4">{{ $item->style_V }}</td>
+					<td class="col-sm-4">{{ $item->main_style }}</td>
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>วัน เดือน ปี เกิด</b></td>
-					<td class="col-sm-2">{{ $item->birthday }}</td>
+					<td class="col-sm-2">{{ $item->main_birthday }}</td>
 					<td class="col-sm-1"><b>อายุ (ปี)</b></td>  	
-					<td class="col-sm-1">{{ $item->Age }}</td>
+					<td class="col-sm-1">{{ $item->main_age }}</td>
 					<td class="col-sm-2"><b>เพศ</b></td>
 					<td class="col-sm-4">{{ $item->gender_name }}</td>
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>น้ำหนัก</b></td>
-					<td class="col-sm-2">{{ $item->weight }}</td>
+					<td class="col-sm-2">{{ $item->main_weigth }}</td>
 					<td class="col-sm-1"><b>ส่วนสูง</b></td>
-					<td class="col-sm-1">{{ $item->height }}</td>
+					<td class="col-sm-1">{{ $item->main_height }}</td>
 					<td class="col-sm-2"><b>หมู่เลือด</b></td>
 					<td class="col-sm-4">{{ $item->blood_name }}</td>
 			</table>
@@ -117,29 +118,35 @@
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2" style="padding-bottom:40px"><b>ที่อยู่ตามภูมิลำเนา</b></td>
-					<td class="col-sm-10">{{ $item->address_permanent }}</td>
+					<td class="col-sm-10">{{ $item->main_permenAddress }}</td>
 			</table>	
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2" style="padding-bottom:40px"><b>ที่อยู่ปัจจุบัน</b></td>
-					<td class="col-sm-10">{{ $item->address_present }}</td>
+					<td class="col-sm-10">{{ $item->main_presentAddress }}</td>
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>เบอร์โทรศัพท์</b></td>
-					<td class="col-sm-4">{{ $item->contact_phone }}</td>
+					<td class="col-sm-4">{{ $item->main_phone }}</td>
 					<td class="col-sm-2"><b>มือถือ</b></td>
-					<td class="col-sm-4">{{ $item->contact_mobile }}</td>
+					<td class="col-sm-4">{{ $item->main_mobile }}</td>
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>E-mail</b></td>
-					<td class="col-sm-4">{{ $item->contact_Email }}</td>
+					<td class="col-sm-4">{{ $item->main_Email }}</td>
 					<td class="col-sm-2"><b>Facebook</b></td>
-					<td class="col-sm-4">{{ $item->contact_facebook }}</td>
+					<td class="col-sm-4">{{ $item->main_facebook }}</td>
 			</table>
 			<table class="table" style="margin-bottom: 0px;">
 					<td class="col-sm-2"><b>Web site</b></td>
-					<td class="col-sm-10">{{ $item->contact_wedsite }}</td>
-			</table> 
+					<td class="col-sm-10">{{ $item->main_website }}</td>
+			</table>  
 </div>
 @endforeach
 <br><br>
+
+<script>
+function goBack() {
+    window.history.back()
+}
+</script>
 @endsection
