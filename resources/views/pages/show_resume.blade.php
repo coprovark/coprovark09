@@ -31,12 +31,12 @@
             <td>ประเภทผู้ใช้งาน</td>
             <td>รหัสนักศึกษา/อาจารย์</td>
             <td>เลขที่บัตรประจำตัว</td>
-            <td>ชื่อ</td>
+            <td>ชื่อ-สกุล</td>
             <td>ดำเนินการ</td>
         </tr>
         @foreach($data_list as $item)
         <tr>
-            <td>{{ $item->main_id }}</td>
+            <td>{{ $i++ }}</td>
             <td>{{ $item->main_no }}</td>
             <td>{{ $item->main_date }}</td>
             <td>{{ $item->user_lavel }}</td>
@@ -50,7 +50,7 @@
                     ลบรายการ
                 </button>
 
-                <a href="/form_main_edit/{{ $item->main_id }}" class="btn btn-success btn-xs" role="button">แก้ไข
+                <a href="/form_resume_edit/{{ $item->main_id }}" class="btn btn-success btn-xs" role="button">แก้ไข
                        <span class="glyphicon glyphicon-pencil"></span></a>
 
                 <a href="/list_resume/{{ $item->main_id }}" class="btn btn-primary btn-xs" role="button">รายละเอียด

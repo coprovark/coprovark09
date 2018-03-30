@@ -408,10 +408,10 @@
                                         </div>
                                 </div>
                         </div>
-        </div><br><br> -->
+        </div><br><br> 
 
                <center>
-                        <button type="submit" class="btn btn-primary">บันทึก</button>
+                        <button type="submit" class="btn btn-primary" onclick="newDoc()">บันทึก</button>
                         <a type="button" href="/form_resume" class="btn btn-danger">ยกเลิก</a>                      
                 </center>
         
@@ -435,5 +435,12 @@ function calAge(o){
      var current_year = current.getFullYear();
      document.getElementById("age").value = current_year - tmp[0];
 }
+
+function newDoc() {
+    if(confirm('ยืนยันการบันทึก')){
+    window.location.assign("")
+   }
+}
+
 </script>
 	

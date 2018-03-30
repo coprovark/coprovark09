@@ -909,7 +909,8 @@ public function show_resume()
 
     return view('pages.show_resume',[
       'data_list' => $users,
-      'find'      => $find
+      'find'      => $find,
+      'i'         => 1
     ]);
 }
 
@@ -925,7 +926,8 @@ public function show_resume_find(Request $req)
           ->get();
     return view('pages.show_resume',[
       'data_list' => $users,
-      'find'      => $find
+      'find'      => $find,
+      'i'         => 1
     ]);
 }
 
@@ -1034,6 +1036,121 @@ public function form_resume_save(Request $req){
  ]);
 }
 
+#delete_resume
+public function delete_resume($main_id){
+  DB::table('tb_main')
+      ->where('main_id', '=', $main_id)
+      ->delete();
+  return redirect('show_resume');
+}
+
+#edit
+public function form_resume_edit(Request $req){
+  $titlename = DB::table('tbtitle')->select('*')->get();
+  $mojor = DB::table('tbmojor')->select('*')->get();
+  $faculty = DB::table('tbfaculty')->select('*')->get();
+  $institute = DB::table('tbinstitute')->select('*')->get();
+  $type = DB::table('tbtype')->select('*')->get();
+  $nation = DB::table('tbnation')->select('*')->get();
+  $race = DB::table('tbrace')->select('*')->get();
+  $religion = DB::table('tbreligion')->select('*')->get();
+ 
+
+  $find = $req->main_id;
+  $user = DB::table('tb_main')
+        ->select('*')
+        ->where('main_id','=',$find)
+        ->get();
+
+  return view('pages.form_resume_edit',[
+    'main' => $user,
+    'title'       =>$titlename,
+    'mojor'       =>$mojor,
+    'faculty'     =>$faculty,
+    'institute'   =>$institute,
+    'type'        =>$type,
+    'nation'      =>$nation,
+    'race'        =>$race,
+    'religion'    =>$religion
+    
+  ]);
+}
+
+#form_resume_update
+public function form_resume_update(Request $req){
+  $main_id           = $req->ID;
+  $main_no           = $req->NO;
+  $main_date         = $req->DATE;
+  $main_type         = $req->TYPE;
+  $main_code         = $req->CODE;
+  $main_idcard       = $req->IDCARD;
+  $main_titlename    = $req->TITLENAME;
+  $main_name         = $req->NAME;
+  $main_nickname     = $req->NICKNAME;
+  $main_mojor        = $req->MOJOR;
+  $main_faculty      = $req->FACULTY;
+  $main_lavel        = $req->LAVEL;
+  $main_gpa          = $req->GPAS;
+  $main_institute    = $req->INSTITUTE;
+  $main_studenttype  = $req->STUDENTTYPE;
+  $main_style        = $req->STYLE;
+  $main_birthday     = $req->BIRTHDAY;
+  $main_age          = $req->AGE;
+  $main_gender       = $req->GENDER;
+  $main_weigth       = $req->WEIGTH;
+  $main_height       = $req->HEIGHT;
+  $main_blood        = $req->BLOOD;
+  $main_status       = $req->STATUS;
+  $main_nation       = $req->NATION;
+  $main_race         = $req->RACE;
+  $main_religion     = $req->RELIGION;
+  $main_permenAddress    = $req->PERMANADDRESS;
+  $main_presentAddress   = $req->PRESENTANADDRESS;
+  $main_phone        = $req->PHONE;
+  $main_mobile       = $req->MOBILE;
+  $main_Email        = $req->EMAIL;
+  $main_facebook     = $req->FACEBOOK;
+  $main_website      = $req->WEBSITE;
+  $data = [
+      
+      'main_no'              =>$main_no,
+      'main_date'            =>$main_date,
+      'main_type'            =>$main_type,
+      'main_code'            =>$main_code,
+      'main_idcard'          =>$main_idcard,
+      'main_titlename'       =>$main_titlename,
+      'main_nickname'        =>$main_nickname,
+      'main_mojor'           =>$main_mojor,
+      'main_faculty'         =>$main_faculty,
+      'main_lavel'           =>$main_lavel,
+      'main_gpa'             =>$main_gpa,
+      'main_institute'       =>$main_institute,
+      'main_studenttype'     =>$main_studenttype,
+      'main_style'           =>$main_style,
+      'main_birthday'        =>$main_birthday,
+      'main_gender'          =>$main_gender,
+      'main_weigth'          =>$main_weigth,
+      'main_height'          =>$main_height,
+      'main_blood'           =>$main_blood,
+      'main_status'          =>$main_status,
+      'main_nation'          =>$main_nation,
+      'main_race'            =>$main_race,
+      'main_religion'        =>$main_religion,
+      'main_permenAddress'   =>$main_permenAddress,
+      'main_presentAddress'  =>$main_presentAddress,
+      'main_phone'           =>$main_phone,
+      'main_mobile'          =>$main_mobile,
+      'main_Email'           =>$main_Email,
+      'main_facebook'        =>$main_facebook,
+      'main_website'         =>$main_website
+      
+
+  ];
+  $status = DB::table('tb_main')
+              ->where('main_id', $main_id)
+              ->update($data);
+  return redirect('show_resume');
+}
 
 
 

@@ -48,6 +48,7 @@ function newDoc() {
     window.location.assign("")
    }
 }
+
 </script>                
 @endsection
 

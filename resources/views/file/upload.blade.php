@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <br><bR><br>
@@ -32,10 +33,12 @@
     </div>
     <div class="col-sm-8">
 
+       <button class="btn btn-primary" onclick="getID()">DELETE ON SELECT</button>
         <table class="table">
             <thead>
                 <tr>
-                    <th></th>
+                    <td><input type="checkbox" id="itemall"</td>
+                    <th></th>    
                     <th>ชื่อไฟล์</th>
                     <th>ขนาดไฟล์</th>
                     <th>ประเภทไฟล์</th>
@@ -46,34 +49,65 @@
             <tbody>
                 @foreach($datatable as $row)
                 <tr>
+                <td><input type="checkbox" class="item" value="{{ $row->ID }}"</td>
                     <td>
 
                         @if($row->FileType == 'png' OR $row->FileType == 'jpeg')
                             <!-- <img src="upload/{{$row->FilePath}}" width="60px"> -->
                             <img src="{{ asset('upload/'.$row->FilePath)}}" width="60px">
                             
-                        @endif
+                        @endif    
 
-                        
-
-                    </td>
-                    <td>{{ $row->FileName }}</td>
-                    <td>{{ $row->FileSize }} KB</td>
-                    <td>{{ strtoupper($row->FileType) }}</td>
-                    <td>{{ $row->FilePath }}</td>
-                    <td>
-                        <a class="btn btn-xs btn-info" href="dl/{{$row->FilePath}}/{{ $row->FileName }}.{{ $row->FileType }}" target="new">Download</a>
-                        <a class="btn btn-xs btn-danger" href="rm/{{$row->ID}}">Delete</a>
-                        <a class="btn btn-xs btn-warning" href="{{url('ed/'.$row->ID)}}">Edit</a>
+                    </td>   
+                        <td>{{ $row->FileName }}</td>
+                        <td>{{ $row->FileSize }} KB</td>
+                        <td>{{ strtoupper($row->FileType) }}</td>
+                        <td>{{ $row->FilePath }}</td>
+                        <td>
+                            <a class="btn btn-xs btn-info" href="dl/{{$row->FilePath}}/{{ $row->FileName }}.{{ $row->FileType }}" target="new">Download</a>
+                            <a class="btn btn-xs btn-danger" href="rm/{{$row->ID}}">Delete</a>
+                            <a class="btn btn-xs btn-warning" href="{{url('ed/'.$row->ID)}}">Edit</a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
 
         </table>
+        
 
     </div>
-
-
-
 </div>
+
+
+<script>
+		$('#itemall').click(function(){
+			if($('#itemall').is(':checked')){
+				$(".item").prop('checked', true);
+			}else{
+				$(".item").prop('checked', false);
+			}
+		});
+    
+           function getID(){
+			var final = [];
+			$('.item:checked').each(function(){        
+			    var values = $(this).val();
+			    final.push(values);
+			});
+            console.log(final);
+
+    //send data to server
+			$.ajax({
+				url: './api/delete',
+				type: 'POST',
+				dataType: 'json',
+				data: {param: final},
+			})
+			.done(function(res) {
+                location.reload();
+				console.log(res);
+			});
+        } 
+    
+</script>
+

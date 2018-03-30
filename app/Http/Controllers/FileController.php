@@ -15,7 +15,7 @@ class FileController extends Controller
         return view('file.upload',[
             'datatable' => $query,
             'edit'      => [],
-            'i'=> 1
+            'i'         => 1
         ]);
     }
 
@@ -33,6 +33,19 @@ class FileController extends Controller
             }
         }
         return redirect('upload1');
+    }
+  
+    public function deleteItem(Request $req){
+        $item = $req->param;
+        foreach ($item as $value) {
+            $query = DB::table('file')->where('ID','=',$value)->get();
+            foreach($query as $row){
+                if(@unlink('upload/'.$row->FilePath)){
+                    DB::table('file')->where('ID','=',$value)->delete();
+                }
+            }
+        }
+        return response()->json($item);
     }
 
 

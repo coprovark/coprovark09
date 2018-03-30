@@ -433,6 +433,14 @@ Route::get('/list_resume/{id}','PersonalController@list_resume');
 
 Route::get('/form_resume','PersonalController@list');
 
+ #delete_resume
+ Route::get('/delete_tb_main/{main_id}','PersonalController@delete_resume');
+
+ #Edit
+ Route::get('/form_resume_edit/{main_id}','PersonalController@form_resume_edit');
+
+Route::post('/form_resume_update','PersonalController@form_resume_update');
+
 
 
  //==========================================================================================================================================
@@ -454,4 +462,19 @@ Route::get('/rm/{ID}','FileController@rm');
 Route::get('/ed/{ID}','FileController@ed');
 Route::post('/update123','FileController@update123');
 
+#chackbook
+Route::post('/api/delete','FileController@deleteItem');
+
+
+//=================================================================================================================================
+#Gallery
+// Route::get('/gallery', function () {
+//     return view('file.gallery');
+// });
+
+Route::get('/gallery','GalleryController@show_gallery');
+
+Route::get('/form_gallery', function () {
+    return view('file.form_gallery'); 
+});
 
